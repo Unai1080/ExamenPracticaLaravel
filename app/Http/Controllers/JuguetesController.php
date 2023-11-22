@@ -9,60 +9,47 @@ use App\Models\Juguetes;
 
 class JuguetesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
         return view('index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+   
     public function catalogo()
     {
         $juguetes = Juguetes::all();
         return view('catalogo', ['juguetes' => $juguetes]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function añadirJuguete(Request $request)
     {
-        //
+        $izena= $request->input('izena');
+        $deskripzioa= $request->input('deskripzioa');
+        $stock= $request->input('stock');
+
+        $juguete = new Juguetes();
+        $juguete->izena = $izena;
+        $juguete->deskripzioa = $deskripzioa;
+        $juguete->stock = $stock;
+        $juguete->save();
+
+        return $this->catalogo();
+
+
+    }
+    public function vistaAñadirJuguete()
+    {
+        return view("añadirJuguetes");
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function delete($id)
+    
     {
-        //
+      Juguetes::destroy($id);
+      return $this->catalogo();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    
+   
 }

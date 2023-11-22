@@ -13,10 +13,6 @@
             @csrf
             <input type="submit" value="Añadir Juguete">
         </form>
-        <form action="/borrar Juguete" method="get">
-            @csrf
-            <input type="submit" value="Borrar Juguete">
-        </form>
         <form action="/catalogo" method="get">
             @csrf
             <input type="submit" value="Catalogo">

@@ -15,4 +15,13 @@ use App\Http\Controllers\JuguetesController;
 */
 
 Route::get('/', [JuguetesController::class, 'index']);
+
 Route::get('/catalogo', [JuguetesController::class, 'catalogo']);
+Route::post('/catalogo',[JuguetesController::class, 'añadirJuguete']);
+
+Route::get('/añadirJuguete', [JuguetesController::class, 'vistaAñadirJuguete']);
+
+Route::post('/delete/{id}', [JuguetesController::class, 'delete']);
+
+
+
